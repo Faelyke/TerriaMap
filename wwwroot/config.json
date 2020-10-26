@@ -42,9 +42,16 @@
         appName: "Terria Map",
 
         // See comments in lib/Views/global.scss for further information about customising colors, logos, fonts etc.
+        /*
         brandBarElements: [
             "",
             "<a target=\"_blank\" href=\"https://terria.io\"><img src=\"images/terria_logo.png\" height=\"52\" title=\"Version: {{version}}\" /></a>",
+            ""
+        ],
+        **/
+        brandBarElements: [
+            "",
+            "<h2 style='color:white;'>IORAMA</h2>",
             ""
         ],
         // Shown when things go wrong.
