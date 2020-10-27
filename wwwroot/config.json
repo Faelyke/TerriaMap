@@ -1,16 +1,16 @@
 {
     /* Names of init files (in wwwroot/init), without the .json extension, to load by default */
-    initializationUrls: [
+    "initializationUrls": [
         "terria"
     ],
-    parameters: {
-        googleUrlShortenerKey: null,
-        googleAnalyticsKey: null,
-        googleAnalyticsOptions: null,
+    "parameters": {
+        "googleUrlShortenerKey": null,
+        "googleAnalyticsKey": null,
+        "googleAnalyticsOptions": null,
         /* Text that appears at the bottom of the map */
-        disclaimer: {
-            text: "Disclaimer: This map must not be used for navigation or precise spatial analysis",
-            url: ""
+        "disclaimer": {
+            "text": "Disclaimer: This map must not be used for navigation or precise spatial analysis",
+            "url": ""
         },
         /*
         // Text that will be added to any pages printed from your site.
@@ -39,7 +39,7 @@
             link: "http://www.example.com"
         },*/
         // This is used in various text messages. You should also set <title> in index.html
-        appName: "Terria Map",
+        "appName": "Terria Map",
 
         // See comments in lib/Views/global.scss for further information about customising colors, logos, fonts etc.
         /*
@@ -49,21 +49,21 @@
             ""
         ],
         **/
-        brandBarElements: [
+        "brandBarElements": [
             "",
             "<h2 style='color:white;'>IORAMA</h2>",
             ""
         ],
         // Shown when things go wrong.
-        supportEmail: "help@example.com",
+        "supportEmail": "help@example.com",
         // You probably shouldn't change this.
-        proj4ServiceBaseUrl: "proj4def/",
+        "proj4ServiceBaseUrl": "proj4def/",
         // Or this
-        feedbackUrl: "feedback",
+        "feedbackUrl": "feedback",
 
         // Default mobile viewer mode when loading the map for the first time on mobile platforms.
         // Options are: "3DTerrain", "3DSmooth", "2D"
-        mobileDefaultViewerMode: "2d",
+        "mobileDefaultViewerMode": "2d",
         // Enable experimental features, since its nice to have the bleeding edge.
         // Disable it if things go wrong with the experimental features or your users aren't robust to features which might change or disapear completly.
         "experimentalFeatures": true,
@@ -80,6 +80,8 @@
         // True to display new feature popups.
         // "showFeaturePrompts": false,
 
+        "cesiumIonAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0Y2Y5Yjg4NC1hMzUyLTQxZjMtYjUwYS02NTMwOGVmNTEzM2MiLCJpZCI6MzY1ODEsImlhdCI6MTYwMzc2NTgyOX0.fuK3A1uXh9FNFBWZA2FYaKRJyXzMcfUiN4l6PiXEVp0",
+        
     }
 }
 
