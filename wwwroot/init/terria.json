@@ -3,7 +3,7 @@
 
   "initialCamera":{"west":138.0488435231747,"south":-37.39255187835166,"east":161.5140307419442,"north":-26.198519426086392,"position":{"x":-5315614.883260529,"y":2700454.4444659087,"z":-5085893.968869238},"direction":{"x":0.3580328867489153,"y":0.008867454472928527,"z":0.9336668679231416},"up":{"x":-0.7035795285179183,"y":0.6599438541293156,"z":0.2635335964302248}},
   "homeCamera":{"west":109,"south":-45,"east":158,"north":-8},
-  
+
   "catalog": [
     {
       "name": "Example Datasets",
@@ -129,8 +129,8 @@
           "description": "Rail data retrieved from Cesium-Ion.",
           "type": "3d-tiles",
           "ionAccessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0Y2Y5Yjg4NC1hMzUyLTQxZjMtYjUwYS02NTMwOGVmNTEzM2MiLCJpZCI6MzY1ODEsImlhdCI6MTYwMzc2NTgyOX0.fuK3A1uXh9FNFBWZA2FYaKRJyXzMcfUiN4l6PiXEVp0",
-          "ionAssetId": "96188",
-          "zoomOnEnable": true
+          "ionAssetId": "96188"
+          
         },
 
         {
