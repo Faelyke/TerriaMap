@@ -14,6 +14,15 @@ class DummyObject(str):
     
 payload = None
 points_db = []
+flat_points = []
+segments = []
+class Segment:
+    def __init__(self, lat, long, points, rail):
+        self.lat = lat
+        self.long = long
+        self.points = points
+        self.rail = rail
+
 
 def get_closest_point(point, rail_index):
     distance = 9999
@@ -28,12 +37,12 @@ def get_closest_point(point, rail_index):
             if distance_ < distance:
                 distance = distance_
                 mdi = index
-            distance_ = math.sqrt(
-                (point[0] - cached_last_point[0])**2  + (point[1] - cached_last_point[1])**2
-            )
-            if distance_ < distance:
-                distance = distance_
-                mdi = index
+            #distance_ = math.sqrt(
+            #    (point[0] - cached_last_point[0])**2  + (point[1] - cached_last_point[1])**2
+            #)
+            #if distance_ < distance:
+            #    distance = distance_
+            #    mdi = index
     print(distance)
     return points_db[mdi], distance
 
@@ -72,7 +81,7 @@ def multilinestring_to_positions(rail, join_nearest_rail=False, index=0):
 
     if join_nearest_rail and index < len(payload)-1:
         other_point, distance = get_closest_point((points[-1], points[-2]), index)
-        if distance < 0.008:
+        if distance < 0.04:
             points.append(other_point[0])
             points.append(other_point[1])
             points.append(0)
@@ -100,8 +109,41 @@ doc.packets.append(initial_packet)
 # fill cached points
 for rail in payload:
     points_db.append(multilinestring_to_positions(rail, False, -1))
+    segments.append(Segment(points_db[-1][0], points_db[-1][1] , points_db[-1], rail))
 
+segments.sort(key = lambda o : o.long)
+print([segment.long for segment in segments])
+points_db.clear()
+
+coordinates = []
+current_time = datetime.datetime(year=2020, month=1, day=1)
+for segment in segments:
+    points_db.append(segment.points)
+    for point in segment.points:
+        flat_points.append(point)
+    coordinates.append(current_time)
+    coordinates.append(segment.lat)
+    coordinates.append(segment.long)
+    coordinates.append(0)
+    current_time += datetime.timedelta(days=100)
+#
+    
+    #
+packet = czml.CZMLPacket(id=f"train", status="moving")
+positions = czml.Positions(cartographicDegrees=flat_points)
+
+
+packet.position = czml.Position(cartographicDegrees=coordinates)
+print((points_db[0][-1], points_db[0][-2], 0))
+print(points_db[0])
+bb = czml.Billboard(scale=0.1, show=True)
+bb.image = "http://localhost:3001/train_express.png"
+bb.color = {'rgba': [255,255,255,255]}
+packet.billboard = bb
+
+doc.packets.append(packet)
 for index, rail in enumerate(payload):
+  #  rail = segment.rail
     positions = multilinestring_to_positions(rail, False, index)
 
 
@@ -120,6 +162,9 @@ for index, rail in enumerate(payload):
 
     positions = czml.Positions(cartographicDegrees=positions)
 
+
+    
+
     pl = czml.Polyline(positions=positions)
     if rail['new_track'].lower() == "new":
         color = {'rgba': [255, 0,0,255]}
@@ -128,9 +173,16 @@ for index, rail in enumerate(payload):
     pl.material = czml.Material(solidColor=czml.SolidColor(color=color))
     pl.width = 5
     pl.clampToGround = True
-    
+    # https://icons-for-free.com/iconfiles/png/512/express+harry+hogwarts+potter+train+icon-1320183591487406864.png
+
     packet.polyline = pl
     doc.packets.append(packet)
 
+    # time packet
+
+    
 filename = "../wwwroot/test/rails.czml"
+doc.write(filename)
+
+filename = "rails.czml"
 doc.write(filename)
