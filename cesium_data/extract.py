@@ -8,6 +8,6 @@ class BearerAuth(requests.auth.AuthBase):
         return r
 
 
-response = requests.get("https://api.cesium.com/v1/assets", auth=BearerAuth('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0Y2Y5Yjg4NC1hMzUyLTQxZjMtYjUwYS02NTMwOGVmNTEzM2MiLCJpZCI6MzY1ODEsImlhdCI6MTYwMzc2NTgyOX0.fuK3A1uXh9FNFBWZA2FYaKRJyXzMcfUiN4l6PiXEVp0'))
+response = requests.get("https://api.cesium.com/v1/assets", auth=BearerAuth('<ION_ACCESS_TOKEN>'))
 
 print(response, response.text)
