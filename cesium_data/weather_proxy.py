@@ -1,10 +1,4 @@
-"""
-A simple proxy server, based on original by gear11:
-https://gist.github.com/gear11/8006132
-Modified from original to support both GET and POST, status code passthrough, header and form data passthrough.
-Usage: http://hostname:port/p/(URL to be proxied, minus protocol)
-For example: http://localhost:5000/p/www.google.com
-"""
+
 import re
 from urllib.parse import urlparse, urlunparse
 from flask import Flask, render_template, request, abort, Response, redirect
@@ -17,7 +11,7 @@ CHUNK_SIZE = 1024
 LOG = logging.getLogger("app.py")
 
 
-address = ('localhost', 3000)
+address = ('iorama.geosynergy.com.au', 3000)
 
 @app.route('/radar/<path:url>', methods=["GET", "POST"])
 def root(url):
@@ -43,5 +37,5 @@ def root(url):
 
     return Response("Nothing sent")
 
-
-app.run(address[0], address[1])
+if __name__ == "__main__":
+    app.run(address[0], address[1])
