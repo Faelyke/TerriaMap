@@ -17,7 +17,7 @@ CHUNK_SIZE = 1024
 LOG = logging.getLogger("app.py")
 
 
-address = ('localhost', 5000)
+address = ('localhost', 3000)
 
 @app.route('/radar/<path:url>', methods=["GET", "POST"])
 def root(url):
