@@ -10,8 +10,12 @@
           "name": "Rail Data",
           "description": "Path of rails with construction status.",
           "type": "czml",
-          "url": "test/rails.czml"
-          
+          "url": "test/rails.czml",
+          "isEnabled": true,
+          "tableStyle": {
+            "dataVariable": "status",
+            "timeColumn": null
+          }
           
         },
         {
