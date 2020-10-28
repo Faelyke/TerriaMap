@@ -98,9 +98,10 @@ doc = czml.CZML()
 initial_packet =  czml.CZMLPacket(id="document", version="1.0")
 initial_packet.clock = {
             "step": "SYSTEM_CLOCK_MULTIPLIER",
+            #"step": 1,
             "range": "LOOP_STOP",
             "multiplier": 2160000/600,
-            "interval": "2020-01-01/2030-01-01",
+            "interval": "2020-01-01/2035-01-01",
             "currentTime": "2020-01-01"
         }
 initial_packet.name = "IORAMA Rails"
@@ -116,7 +117,7 @@ print([segment.long for segment in segments])
 points_db.clear()
 
 coordinates = []
-current_time = datetime.datetime(year=2020, month=1, day=1)
+current_time = datetime.datetime(year=2020, month=1, day=1, hour=12)
 for segment in segments:
     points_db.append(segment.points)
     for point in segment.points:
@@ -125,7 +126,7 @@ for segment in segments:
     coordinates.append(segment.lat)
     coordinates.append(segment.long)
     coordinates.append(0)
-    current_time += datetime.timedelta(days=100)
+    current_time += datetime.timedelta(minutes=180)
 #
     
     #
