@@ -32,6 +32,14 @@
             "timeColumn": null
           }
           
+        },
+
+        {
+          "name": "Weather Radar",
+          "description": "Rainviewer API - Weather Radar",
+          "type": "open-street-map",
+          "url": "https://radar.iorama.geosynergy.com.au/radar/",
+          "isEnabled": true
         }
 
       ]
