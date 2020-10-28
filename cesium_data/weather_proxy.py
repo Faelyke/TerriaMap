@@ -5,17 +5,24 @@ from flask import Flask, render_template, request, abort, Response, redirect
 import requests
 import logging
 
+from flask_cors import CORS
+
 app = Flask(__name__.split('.')[0])
+CORS(app)
+
 logging.basicConfig(level=logging.INFO)
 CHUNK_SIZE = 1024
 LOG = logging.getLogger("app.py")
 
-
-address = ('iorama.geosynergy.com.au', 3000)
+# this will need to be changed
+address = ('127.0.0.1', 80)
 
 @app.route('/radar/<path:url>', methods=["GET", "POST"])
 def root(url):
-    _url = request.url.split(f"{address[0]}:{address[1]}")
+    if int(address[1] ) != 80:
+        _url = request.url.split(f"{address[0]}:{address[1]}")
+    else:
+        _url = request.url.split(address[0])
     if 'favicon' not in request.url:
         keys = _url[1].split("/")
         z = int(keys[2])
@@ -23,7 +30,7 @@ def root(url):
         y = int(keys[4].split(".")[0])
         ext = ".png"
         
-        # get timestampes
+        # get timestamps
         r = requests.get("https://api.rainviewer.com/public/maps.json")
         timestamps = r.json()
         #print(timestamps)
