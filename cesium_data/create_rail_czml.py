@@ -137,7 +137,7 @@ packet.position = czml.Position(cartographicDegrees=coordinates)
 print((points_db[0][-1], points_db[0][-2], 0))
 print(points_db[0])
 bb = czml.Billboard(scale=0.1, show=True)
-bb.image = "http://localhost:3001/train_express.png"
+bb.image = "https://terriamap.iorama.geosynergy.com.au/train_express.png"
 bb.color = {'rgba': [255,255,255,255]}
 packet.billboard = bb
 
