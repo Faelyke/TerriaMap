@@ -1,6 +1,6 @@
 FILES = [
     './extract.py',
-    '../wwwroot/init/iorama.json'
+    '../wwwroot/init/iorama.json',
     '../wwwroot/config.json'
 ]
 
