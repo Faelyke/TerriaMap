@@ -3,7 +3,8 @@
         "west": 148.751,
         "south": -35.936,
         "east": 149.409,
-        "north": -35.111
+        "north": -35.111,
+		"alt": -50
     },
     "services": [],
     "catalog": [
